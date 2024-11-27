@@ -1,0 +1,54 @@
+.Bestsell{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.imagebest{
+    width: 100%;
+    border-radius: 15px;
+    transition: all ease 0.3s;
+    max-width: 100%;
+}
+
+.imagebest:hover{
+    transform: scale(1.2);
+
+}
+
+.card-continar{
+    border: 1px solid #e1e1e1;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.mapContinar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 22px;
+    margin-right: 22px;
+}
+
+.titleCard{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+.cart{
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.img-continar{
+    overflow: hidden;
+}

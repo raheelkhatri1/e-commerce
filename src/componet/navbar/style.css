@@ -1,0 +1,88 @@
+.logo {
+    width: 60px;
+    margin-left: 30px;
+
+}
+
+.nav-bar {
+    margin-top: 10px;
+    display: flex;
+}
+
+.megamenu {
+    border: none;
+    background-color: white;
+}
+
+.logoContinar {
+    display: flex;
+    justify-content: center;
+}
+
+.inputContinar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    width: 68%;
+    height: 45px;
+    border-radius: 0px 25px 25px 0px;
+    outline: none;
+    border: 1px solid #eaeaea;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: larger;
+}
+
+.input:hover{
+    border: 1px solid black;
+}
+
+.input:focus{
+    border: 1px solid black;
+}
+.buttonSearch{
+    background-color: transparent;
+    border: 1px solid #eaeaea;
+    height: 45px;
+    width: 55px;
+    border-radius: 25px 0px 0px 25px;
+}
+
+.btnAccount{
+    width: 140px;
+    border: 1px solid black;
+    border-radius: 25px;
+    height: 45px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: transparent;
+}
+
+.btnAccount:hover{
+    background-color: black;
+    color: white;
+}
+
+.btnCart{
+    width: 140px;
+    border-radius: 25px;
+    height: 45px;
+
+}
+
+.btnCartLogo{
+    margin-right: 6px;
+    margin-bottom: 2px;
+}
+
+.megamenucontinar{
+    border: 1px solid #eaeaea;
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-left: -30px;
+}
+

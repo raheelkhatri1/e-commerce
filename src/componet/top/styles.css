@@ -1,0 +1,48 @@
+.swiper {
+    width: 50%;
+    height: 50%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #1d2f2f;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .top{
+    width: 100%;
+    background-color: #1d2f2f;
+    height: 35px;
+    color: #f3f0f4;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+  
+.gmail{
+    margin-left: 35px;
+}
+
+.facebook{
+    margin-left: 10px;
+    margin-bottom: 3px;
+}
+
+.drop-down{
+    background-color: #1d2f2f;
+    color: #f3f0f4;
+    border: none;
+    margin-right: 35px;
+}
