@@ -8,10 +8,10 @@
 }
 
 .imagebest{
-    width: 100%;
+    width: 80%;
     border-radius: 15px;
     transition: all ease 0.3s;
-    max-width: 100%;
+    max-width: 80%;
 }
 
 .imagebest:hover{
@@ -51,4 +51,25 @@
 
 .img-continar{
     overflow: hidden;
+    width: 300px;
+    height: 330px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.star{
+    margin-bottom: 10px;
+}
+
+.starTrue {
+    color: #1d2f2f;
+  }
+  
+  .starHalf {
+    color: #1d2f2f;
+  }
+  
+  .starFalse {
+    color: #1d2f2f;
+  }

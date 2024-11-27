@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Top from "../../componet/top";
 import Navbar from "../../componet/navbar";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -7,8 +7,26 @@ import './style.css'
 import { CiStar } from "react-icons/ci";
 import { FaFacebookF } from "react-icons/fa6";
 import { IoLogoWhatsapp } from "react-icons/io";
+import { Api__url } from "../../api/config";
+import axios from "axios";
 
 const ProductDetail = () => {
+
+    const [apiData,setApiData] = useState([])
+
+    useEffect(()=>{
+        async function getUser() {
+            try {
+              const response = await axios.get(Api__url);
+              console.log(response.data,"api q");
+              setApiData(response.data)
+            } catch (error) {
+              console.error(error,"api q");
+            }
+          }
+          getUser()
+    },[])
+
     const parms = useParams()
     const filterData = Bestsell.find(
         (v) => Number(v.id) === Number(parms.id)
