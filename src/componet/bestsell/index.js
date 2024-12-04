@@ -10,6 +10,8 @@ import { Api__url } from "../../api/config";
 import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { updateConuter } from "../../redux/action";
 const BestSell = () => {
 
     const [apiData, setApiData] = useState([])
@@ -20,7 +22,6 @@ const BestSell = () => {
             try {
                 const response = await axios.get(Api__url);
                 setApiData(response.data)
-                console.log(response.data);
             } catch (error) {
                 console.error(error);
             }
@@ -29,21 +30,25 @@ const BestSell = () => {
     }, [])
 
 
-
     const navigate = useNavigate()
-
+    const count = useSelector((state) => state.counter)
+    console.log(count)
+    
+    const dispatch = useDispatch()
     function addToCart(data) {
         let getCart = getCartProducts()
         if (getCart.find(v => v === data.id)) {
             const filterdata = getCart.filter(v => Number(v) !== Number(data.id))
             addProductToCart(filterdata);
-            setProcutdsInCart(filterdata)
+            setProcutdsInCart(filterdata);
+            dispatch(updateConuter("-"))
             message.error("Product removed from Cart")
 
         } else {
             getCart.push(data.id)
             addProductToCart(getCart)
             setProcutdsInCart(getCart)
+            dispatch(updateConuter("+"))
             message.success("Product Added to Cart")
         }
     }

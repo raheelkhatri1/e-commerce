@@ -13,7 +13,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-left: 35px;
-
+    margin-bottom: 25px;
 }
 
 .btnHome{
@@ -70,8 +70,10 @@
     border: none;
     outline-color: #e1e1e1;
     text-align: center;
-    font-size: larger;
+    font-size: 20px;
+    pointer-events: none
 }
+
 
 .btnAccount{
     width: 140px;
@@ -113,4 +115,16 @@
 .btnFBook:hover{
     text-decoration: underline;
 
+}
+
+.trueStar{
+    color: #1d2f2f;
+}
+
+.starHalf{
+    color: #1d2f2f;
+}
+
+.starFalse{
+    color: #1d2f2f;
 }

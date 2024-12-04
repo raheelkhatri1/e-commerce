@@ -37,7 +37,8 @@
 
 .facebook{
     margin-left: 10px;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
+    margin-right: 10px;
 }
 
 .drop-down{
@@ -45,4 +46,8 @@
     color: #f3f0f4;
     border: none;
     margin-right: 35px;
+}
+
+.linkGFI{
+  color: #f3f0f4;
 }

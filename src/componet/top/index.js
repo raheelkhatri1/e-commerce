@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-
+import { LuInstagram } from "react-icons/lu";
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -16,14 +16,22 @@ import './styles.css';
 
 import { SiGmail } from "react-icons/si";
 import { FaFacebookF } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 function Top() {
     return (
 
         <div className='top'>
             <div className='gmail'>
+                <Link className='linkGFI' to={"https://mail.google.com/mail/khatriraheel725@gmail.com"}>
                 <SiGmail size={30} />
+                </Link>
+                <Link className='linkGFI' to={"https://www.facebook.com/raheel.mraheel.5"}>
                 <FaFacebookF className='facebook' size={22} />
+                </Link>
+                <Link className='linkGFI' to={"https://www.instagram.com/raheelcw/"}>
+                <LuInstagram size={25} />
+                </Link>
             </div>
             <Swiper
                 spaceBetween={30}

@@ -13,6 +13,7 @@ import App from '../driver';
 import Bestsell from '../bestsell/data';
 import { getCartProducts } from '../../function/localstorage';
 import Account from '../../layout/account';
+import { useSelector } from 'react-redux';
 
 
 
@@ -35,6 +36,11 @@ function Navbar() {
     const total = productsWithAmount.reduce((amount,current)=>{
         return amount+Number(current.amount)
     },0);
+
+    // const count = useSelector((state) => state.counter)
+    // console.log(count)
+
+   
     
 
     const items = [

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import { getCartProducts } from '../../function/localstorage';
 import Bestsell from '../../componet/bestsell/data';
+import './style.css'
 const CheckOut = ({ isModalOpen, setIsModalOpen }) => {
 
     const [cart, setCart] = useState(getCartProducts())
@@ -19,17 +20,17 @@ const CheckOut = ({ isModalOpen, setIsModalOpen }) => {
     return (
         <>
             <Button type="primary" onClick={showModal}>
-                Open Modal
+                CheckOut
             </Button>
             <Modal title="confirm Order" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <div>
-                    <div className='d-flex justify-content-between'>
+                    <div className='d-flex '>
 
                         <div>
-                            <h2>Items</h2>
+                            <h2 className='fisrtRow'>Items</h2>
                         </div>
                         <div>
-                            <h2>QTD</h2>
+                            <h2 className='secondRow'>QTD</h2>
                         </div>
                         <div>
                             <h2>Price</h2>
@@ -38,11 +39,11 @@ const CheckOut = ({ isModalOpen, setIsModalOpen }) => {
                     {
                         filterData.map((v, i) => {
                             return (
-                                <div className='d-flex justify-content-between'>
-                                    <div>
+                                <div className='d-flex '>
+                                    <div className='fisrtRow'>
                                         <h4>{v.title}</h4>
                                     </div>
-                                    <div>
+                                    <div className='secondRow'>
                                         <h4>3</h4>
                                     </div>
                                     <div>

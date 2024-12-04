@@ -3,6 +3,10 @@ import { Button, Drawer, message } from 'antd';
 import BestSell from "../bestsell/data"
 import {addProductToCart, getCartProducts} from "../../function/localstorage"
 import CheckOut from '../../layout/checkout';
+import axios from 'axios';
+import { Api__url } from '../../api/config';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateConuter } from '../../redux/action';
 const App = ({open,setOpen}) => {
   const [deleteProdut,setDeleteProduct] = useState(getCartProducts())
   function deleteCart(data) {
@@ -18,8 +22,25 @@ const App = ({open,setOpen}) => {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cart,setCart] = useState(getCartProducts())
+  const [apidata,setApiData] = useState([])
+  // const dispatch = useDispatch()
   
-  const filterData = BestSell.filter(v => v?.id && cart.includes(v.id)) 
+  
+  
+  
+  const filterData = apidata.filter(v => v?.id && cart.includes(v.id)) 
+  
+  useEffect(()=>{
+    async function getUser() {
+      try {
+          const response = await axios.get(Api__url);
+          setApiData(response.data)
+      } catch (error) {
+          console.error(error);
+      }
+    }
+    getUser()
+  },[])
   
   
   const showDrawer = () => {
@@ -41,13 +62,13 @@ const App = ({open,setOpen}) => {
       return amount+Number(current.amount)     
     },0);
     
-    useEffect(()=>{
-      setCart (getCartProducts() ?? [])
-    },open)
+    // dispatch(updateConuter(total))
     
     useEffect(()=>{
       setCart (getCartProducts() ?? [])
-    },onClose)
+    },[])
+    
+    
     
     return (
       <div>
