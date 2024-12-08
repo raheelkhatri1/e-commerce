@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Top from "../../componet/top";
 import Navbar from "../../componet/navbar";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import Bestsell from "../../componet/bestsell/data";
+import { useNavigate, useParams } from "react-router-dom";
 import './style.css'
 import { CiStar } from "react-icons/ci";
 import { FaFacebookF } from "react-icons/fa6";
@@ -21,12 +20,12 @@ const ProductDetail = () => {
     const [quantity, setQuantity] = useState(1);
 
     const incrementQuantity = () => {
-        setQuantity(prevQuantity => prevQuantity + 1); // 1 se quantity badhaye
+        setQuantity(prevQuantity => prevQuantity + 1); 
     };
 
-    // Quantity ko 1 se decrement karna (lekin minimum 1 hone chahiye)
+   
     const decrementQuantity = () => {
-        setQuantity(prevQuantity => Math.max(1, prevQuantity - 1)); // Agar 1 se kam ho toh minimum 1 ho
+        setQuantity(prevQuantity => Math.max(1, prevQuantity - 1));
     };
 
     useEffect(() => {
@@ -65,7 +64,7 @@ const ProductDetail = () => {
     }
 
     function shareFacebook() {
-        const url = window.location.href; // current page URL
+        const url = window.location.href;
         const fbShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
         window.open(fbShareUrl, "_blank", "width=600,height=400");
     }
@@ -85,7 +84,7 @@ const ProductDetail = () => {
             <div className="detail-page">
 
                 <div className="img-box col-12 col-sm-6">
-                    <img src={apiDataParm?.image} />
+                    <img src={apiDataParm?.image} alt="product" />
                 </div>
                 <div className=" data col-12 col-sm-6">
                     <h3>Rs.{apiDataParm?.price}</h3>

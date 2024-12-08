@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Drawer, message } from 'antd';
-import BestSell from "../bestsell/data"
+
 import {addProductToCart, getCartProducts} from "../../function/localstorage"
 import CheckOut from '../../layout/checkout';
 import axios from 'axios';
 import { Api__url } from '../../api/config';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateConuter } from '../../redux/action';
+import { useSelector } from 'react-redux';
 const App = ({open,setOpen}) => {
-  const [deleteProdut,setDeleteProduct] = useState(getCartProducts())
+  const [apidata,setApiData] = useState([])
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [cart,setCart] = useState(getCartProducts())
+
+
   function deleteCart(data) {
     let getCart = getCartProducts()
     if(getCart.find(v => v === data.id)){
       const filterData = getCart.filter(v => Number(v) !== Number(data.id))
       addProductToCart(filterData)
-      setDeleteProduct(filterData)
-      message.success("Product removed from Cart")
+      message.error("Product removed from Cart")
     }
     
   }
   
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [cart,setCart] = useState(getCartProducts())
-  const [apidata,setApiData] = useState([])
-  // const dispatch = useDispatch()
   
+  
+  const count = useSelector((state) => state.counter)
   
   
   
@@ -42,27 +42,12 @@ const App = ({open,setOpen}) => {
     getUser()
   },[])
   
-  
-  const showDrawer = () => {
-    setOpen(true);
-  };
   const onClose = () => {
     setOpen(false);
   };
   
   const CartFooter = () => {
     
-    const productsWithAmount = filterData.map(v => {
-      return {
-        ...v,
-        amount:Number(v.price)
-      }
-    })
-    const total = productsWithAmount.reduce((amount, current)=>{
-      return amount+Number(current.amount)     
-    },0);
-    
-    // dispatch(updateConuter(total))
     
     useEffect(()=>{
       setCart (getCartProducts() ?? [])
@@ -74,7 +59,7 @@ const App = ({open,setOpen}) => {
       <div>
         <div className="d-flex justify-content-between">
           <h4>Total</h4>
-          <h4>Rs.${total}</h4>
+          <h4>Rs.${count}</h4>
         </div>
         <div className="mt-3">
             <Button onClick={()=>setIsModalOpen(true)}  type="primary" className="w-100">
@@ -99,7 +84,7 @@ const App = ({open,setOpen}) => {
               <div className="px-4">
                 <h3>{v.title}</h3>
                 <h2>Rs.{v.price}</h2>
-                <div>Amount: Rs.${Number(v.price) * 2}</div>
+                <div>Amount: Rs.${Number(v.price)}</div>
               </div>
               <div>
                 <button onClick={()=>deleteCart(v)} className='bg-transparent border-0'>X</button>

@@ -23,7 +23,7 @@ function Top() {
 
         <div className='top'>
             <div className='gmail'>
-                <Link className='linkGFI' to={"https://mail.google.com/mail/khatriraheel725@gmail.com"}>
+                <Link className='linkGFI' to={"mailto:khatriraheel725@gmail.com?subject=Inquiry&body=Hello"}>
                 <SiGmail size={30} />
                 </Link>
                 <Link className='linkGFI' to={"https://www.facebook.com/raheel.mraheel.5"}>

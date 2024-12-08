@@ -10,12 +10,14 @@ import { Api__url } from "../../api/config";
 import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { updateConuter } from "../../redux/action";
+import { useDispatch } from "react-redux";
+import { updateAmount, updateConuter } from "../../redux/action";
+import { total } from "../../function/common";
 const BestSell = () => {
-
+    
     const [apiData, setApiData] = useState([])
     const [productsInCart, setProcutdsInCart] = useState(getCartProducts() ?? [])
+    const dispatch = useDispatch()
 
     useEffect(() => {
         async function getUser() {
@@ -29,26 +31,24 @@ const BestSell = () => {
         getUser()
     }, [])
 
-
+    const totalAmount = total(apiData)
+    dispatch(updateAmount(totalAmount))
     const navigate = useNavigate()
-    const count = useSelector((state) => state.counter)
-    console.log(count)
     
-    const dispatch = useDispatch()
     function addToCart(data) {
         let getCart = getCartProducts()
         if (getCart.find(v => v === data.id)) {
             const filterdata = getCart.filter(v => Number(v) !== Number(data.id))
             addProductToCart(filterdata);
             setProcutdsInCart(filterdata);
-            dispatch(updateConuter("-"))
+            
             message.error("Product removed from Cart")
 
         } else {
             getCart.push(data.id)
             addProductToCart(getCart)
             setProcutdsInCart(getCart)
-            dispatch(updateConuter("+"))
+           
             message.success("Product Added to Cart")
         }
     }
@@ -69,8 +69,8 @@ const BestSell = () => {
                         const halfStar = (v.rating.rate % 1) > 0.5 ? true : false;
 
                         return (
-                            <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                                <div className="card-continar">
+                            <div className="col-12 col-sm-6 col-md-4 col-lg-3 card-continar">
+                                
                                     <div className="img-continar" onClick={() => navigate(`product/${v.id}`)}>
                                         <img className="imagebest" src={v.image} />
                                     </div>
@@ -94,7 +94,7 @@ const BestSell = () => {
                                         </div>
                                     </div>
 
-                                </div>
+                                
                             </div>
                         )
                     })

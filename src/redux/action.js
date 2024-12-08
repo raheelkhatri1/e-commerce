@@ -12,9 +12,13 @@ const counterSlice = createSlice({
                 return state - 1;  // Decrement the state by 1
             }
             return state;  // Return current state if action payload is neither "+" nor "-"
+        },
+        updateAmount: (state, action) => {
+            state = action.payload;
+            return state
         }
     }
 });
 
-export const { updateConuter } = counterSlice.actions;
+export const { updateConuter,updateAmount } = counterSlice.actions;
 export default counterSlice.reducer;

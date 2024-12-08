@@ -4,14 +4,10 @@ import { MegaMenu } from 'primereact/megamenu';
 import './style.css'
 import Logo from './../../image/Habiba.png'
 import { IoSearchOutline } from "react-icons/io5";
-import { MdOutlineManageAccounts } from "react-icons/md";
 import { UserOutlined } from '@ant-design/icons';
 import { IoCartOutline } from "react-icons/io5";
-import { useEffect, useState } from 'react';
-import AppDrawer from '../driver';
+import { useState } from 'react';
 import App from '../driver';
-import Bestsell from '../bestsell/data';
-import { getCartProducts } from '../../function/localstorage';
 import Account from '../../layout/account';
 import { useSelector } from 'react-redux';
 
@@ -19,28 +15,9 @@ import { useSelector } from 'react-redux';
 
 
 function Navbar() {
-    const[cart,setCart] = useState(getCartProducts())
-    const filterData = Bestsell.filter(v => v?.id && cart.includes(v.id))
-
-    
     const [open,setOpen] = useState(false)
     const [accountOpen,setAccountOpen] = useState(false)
-    
-    const productsWithAmount = filterData.map(v =>{
-        return{
-            ...v,
-            amount:Number(v.price),
-        }
-    })
-    
-    const total = productsWithAmount.reduce((amount,current)=>{
-        return amount+Number(current.amount)
-    },0);
-
-    // const count = useSelector((state) => state.counter)
-    // console.log(count)
-
-   
+    const count = useSelector((state) => state.counter)
     
 
     const items = [
@@ -148,12 +125,12 @@ function Navbar() {
         <div >
             
             <div className="nav-bar">
-                <img className="logo" src={Logo} />
+                <img className="logo" src={Logo} alt='logo' />
                 <div className='inputContinar'>
                     <button className='buttonSearch'><IoSearchOutline size={20} /></button>
                     <input className='input' placeholder='search for...' type='text' />
                     <button className='btnAccount' onClick={()=>setAccountOpen(true)}><UserOutlined  className='btnCartLogo' /> Account</button>
-                    <button type="button" onClick={()=>setOpen(true)}  class="btn btn-dark btnCart"><IoCartOutline size={20} className='btnCartLogo' />RS:{total}</button>
+                    <button type="button" onClick={()=>setOpen(true)}  class="btn btn-dark btnCart"><IoCartOutline size={20} className='btnCartLogo' />RS:{count}</button>
                     
                 </div>
             </div>
