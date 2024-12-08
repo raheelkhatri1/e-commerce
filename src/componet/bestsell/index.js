@@ -11,7 +11,7 @@ import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { updateAmount, updateConuter } from "../../redux/action";
+import { updateAmount } from "../../redux/action";
 import { total } from "../../function/common";
 const BestSell = () => {
     
@@ -72,7 +72,7 @@ const BestSell = () => {
                             <div className="col-12 col-sm-6 col-md-4 col-lg-3 card-continar">
                                 
                                     <div className="img-continar" onClick={() => navigate(`product/${v.id}`)}>
-                                        <img className="imagebest" src={v.image} />
+                                        <img className="imagebest" src={v.image} alt="product" />
                                     </div>
                                     <div className="titleCard">
                                         <div className="star">

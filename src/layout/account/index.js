@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Button, Drawer, Space } from 'antd';
+import React from 'react';
+import { Drawer } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import "./style.css"
@@ -9,10 +9,6 @@ const Account = ({ open, setOpen }) => {
 
 
     const [passwordVisible, setPasswordVisible] = React.useState(false);
-
-    const showDrawer = () => {
-        setOpen(true);
-    };
 
     const onClose = () => {
         setOpen(false);

@@ -6,13 +6,13 @@ function Slider() {
   return (
     <Carousel>
       <Carousel.Item>
-        <img src={Slider1} />
+        <img src={Slider1} alt='slider1' />
         <Carousel.Caption>
          
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img src={Slider2} />
+        <img src={Slider2} alt='slider2' />
         <Carousel.Caption>
          
         </Carousel.Caption>
