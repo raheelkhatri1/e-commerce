@@ -55,7 +55,6 @@ const CheckOut = ({ isModalOpen, setIsModalOpen }) => {
             <Modal title="confirm Order" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <div>
                     <div className='d-flex '>
-
                         <div>
                             <h2 className='fisrtRow'>Items</h2>
                         </div>

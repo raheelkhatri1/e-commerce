@@ -128,3 +128,12 @@
 .starFalse{
     color: #1d2f2f;
 }
+
+@media only screen and (max-width: 600px) {
+    .img-box{
+        height: 50vh;
+        width: 100%;
+        border: 1px solid #e1e1e1;
+        border-radius: 15px;
+    }
+  }

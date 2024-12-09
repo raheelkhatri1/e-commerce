@@ -50,7 +50,7 @@ function Top() {
                 <SwiperSlide>Save 20% use code: BULKSAVE</SwiperSlide>
                 <SwiperSlide>FREE SHIPPING on orders above RS: 200</SwiperSlide>
             </Swiper>
-            <div>
+            <div className='language'>
                 <select className='drop-down' name="language">
                     <option value="english">English</option>
                     <option value="urdu">Urdu</option>
