@@ -22,7 +22,6 @@
 
 .card-continar{
     border: 1px solid #e1e1e1;
-    width: 23%;
     border-radius: 15px;
     margin-bottom: 20px;
 }
@@ -39,19 +38,16 @@
 .titleCard{
     display: flex;
     justify-content: space-between;
-    margin-left: 20px;
-    margin-right: 20px;
     margin-top: 5px;
 }
 
 .cart{
     display: flex;
     align-items: center;
-    z-index: 1;
+    
 }
 
 .img-continar{
-    
     display: flex;
     justify-content: center;
     align-items: center;

@@ -130,7 +130,7 @@ function Navbar() {
                     <button className='buttonSearch'><IoSearchOutline size={20} /></button>
                     <input className='input' placeholder='search for...' type='text' />
                     <button className='btnAccount' onClick={()=>setAccountOpen(true)}><UserOutlined  className='btnCartLogo' /> Account</button>
-                    <button type="button" onClick={()=>setOpen(true)}  class="btn btn-dark btnCart"><IoCartOutline size={20} className='btnCartLogo' />RS:{count}</button>
+                    <button type="button" onClick={()=>setOpen(true)}  class="btn btn-dark btnCart"><IoCartOutline size={20} className='btnCartLogo' />RS:{count.toFixed(2)}</button>
                     
                 </div>
             </div>

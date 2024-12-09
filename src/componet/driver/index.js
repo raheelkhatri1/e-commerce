@@ -59,7 +59,7 @@ const App = ({open,setOpen}) => {
       <div>
         <div className="d-flex justify-content-between">
           <h4>Total</h4>
-          <h4>Rs.${count}</h4>
+          <h4>Rs.${count.toFixed(2)}</h4>
         </div>
         <div className="mt-3">
             <Button onClick={()=>setIsModalOpen(true)}  type="primary" className="w-100">
