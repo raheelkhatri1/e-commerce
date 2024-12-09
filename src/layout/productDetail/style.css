@@ -140,4 +140,13 @@
         padding-left: 0px;
         padding-right: 0px;
     }
+    .btnCart{
+        line-height: 14px;
+    }
+    .btnAccount{
+        line-height: 14px;
+    }
+    .cirleminus{
+        height: 40px;
+    }
   }
