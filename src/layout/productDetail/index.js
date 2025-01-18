@@ -32,7 +32,7 @@ const ProductDetail = () => {
         async function getUser() {
             try {
                 const response = await axios.get(Api__url);
-                setApiData(response.data)
+                setApiData(response.data.data)
             } catch (error) {
                 console.error(error, "api q");
             }

@@ -10,13 +10,14 @@ import { useState } from 'react';
 import App from '../driver';
 import Account from '../../layout/account';
 import { useSelector } from 'react-redux';
+import Example from '../../layout/account';
 
 
 
 
 function Navbar() {
     const [open,setOpen] = useState(false)
-    const [accountOpen,setAccountOpen] = useState(false)
+    const [show, setShow] = useState(false);
     const count = useSelector((state) => state.counter)
     
 
@@ -128,8 +129,8 @@ function Navbar() {
                 <img className="logo" src={Logo} alt='logo' />
                 <div className='inputContinar'>
                     <button className='buttonSearch'><IoSearchOutline size={20} /></button>
-                    <input className='input' placeholder='search for...' type='text' />
-                    <button className='btnAccount' onClick={()=>setAccountOpen(true)}><UserOutlined  className='btnCartLogo' /> Account</button>
+                    <input className='inputSearch' placeholder='search for...' type='text' />
+                    <button className='btnAccount' onClick={()=>setShow(true)}><UserOutlined  className='btnCartLogo' /> Account</button>
                     <button type="button" onClick={()=>setOpen(true)}  class="btn btn-dark btnCart"><IoCartOutline size={20} className='btnCartLogo' />RS:{count.toFixed(2)}</button>
                     
                 </div>
@@ -140,7 +141,7 @@ function Navbar() {
             </div>
             
         </div>
-            <Account open={accountOpen} setOpen={setAccountOpen} />
+            <Example show={show} setShow={setShow} />
         <App open={open} setOpen={setOpen} />
         
         

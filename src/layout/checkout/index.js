@@ -18,8 +18,8 @@ const CheckOut = ({ isModalOpen, setIsModalOpen }) => {
         async function getUser() {
           try {
               const response = await axios.get(Api__url);
-              setApiData(response.data)
-              let totalAmount = total(response.data)
+              setApiData(response.data.data)
+              let totalAmount = total(response.data.data)
               dispatch(updateAmount(totalAmount))
               const localstorage = getCartProducts()
               setCart(localstorage)

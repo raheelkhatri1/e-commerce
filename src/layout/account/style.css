@@ -1,6 +1,46 @@
+.input{
+    width: 100%;
+    border-radius: 20px 20px 20px 20px;
+    margin-bottom: 10px;
+    height: 45px;
+    outline: none;
+    border: 1px solid #eaeaea;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: larger;
+}
+.nameinput{
+    width: 50%;
+    height: 45px;
+    border-radius: 20px 20px 20px 20px;
+    margin-bottom: 10px;
+}
+
+
+.btnAccount{
+    width: 140px;
+    border: 1px solid black;
+    border-radius: 25px;
+    height: 45px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: transparent;
+}
+
+.btnAccount:hover{
+    background-color: black;
+    color: white;
+}
+
 .btnCart{
     width: 140px;
     border-radius: 25px;
     height: 45px;
 
+}
+
+.sign-up{
+    margin-left: 10px;
+    margin-top: 5px;
+    text-decoration: none;
 }

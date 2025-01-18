@@ -1,1 +1,1 @@
-export const Api__url = "https://fakestoreapi.com/products"
+export const Api__url = "http://localhost:5000/cart"
