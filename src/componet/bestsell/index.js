@@ -13,10 +13,12 @@ import { FaStarHalfAlt } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { updateAmount } from "../../redux/action";
 import { total } from "../../function/common";
+
 const BestSell = () => {
 
     const [apiData, setApiData] = useState([])
     const [productsInCart, setProcutdsInCart] = useState(getCartProducts() ?? [])
+    const [loading, setLoading] = useState(true);
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -24,6 +26,7 @@ const BestSell = () => {
             try {
                 const response = await axios.get(Api__url);
                 setApiData(response.data.data)
+                setLoading(false);
             } catch (error) {
                 console.error(error);
             }
@@ -55,7 +58,13 @@ const BestSell = () => {
         }
     }
 
-
+    if (loading) {
+        return (
+            <div className="loader-container">
+                <div className="loader"></div> {/* CSS loader */}
+            </div>
+        );
+    }
     return (
         <div>
             <div className="Bestsell">

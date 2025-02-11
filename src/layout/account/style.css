@@ -44,3 +44,18 @@
     margin-top: 5px;
     text-decoration: none;
 }
+
+.userImg{
+    width: 80px;
+    height: 80px;
+}
+
+.imgContinar{
+    text-align: center;
+}
+
+.nameContinar{
+    display: flex;
+    margin-top: 20px;
+}
+

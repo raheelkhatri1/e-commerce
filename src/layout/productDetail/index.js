@@ -18,6 +18,7 @@ const ProductDetail = () => {
 
     const [apiData, setApiData] = useState([])
     const [quantity, setQuantity] = useState(1);
+    const [loading,setloading] = useState(true)
 
     const incrementQuantity = () => {
         setQuantity(prevQuantity => prevQuantity + 1); 
@@ -33,6 +34,7 @@ const ProductDetail = () => {
             try {
                 const response = await axios.get(Api__url);
                 setApiData(response.data.data)
+                setloading(false)
             } catch (error) {
                 console.error(error, "api q");
             }
@@ -75,9 +77,18 @@ const ProductDetail = () => {
     const isAdded = productsInCart?.includes(apiDataParm?.id)
     const fullStars = Math.floor(apiDataParm?.rating.rate);
     const halfStar = (apiDataParm?.rating.rate % 1) > 0.5 ? true : false;
+
+    if(loading){
+        return(
+            <div className="loader-container">
+            <div className="loader">
+            </div>
+        </div>
+        );
+    }
     return (
         <div>
-
+            
             <Top />
             <Navbar />
             <button className="btnHome" onClick={BactToHome}>Home</button> / {apiDataParm?.category} / {apiDataParm?.title}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Modal } from 'antd';
+import { Button, message, Modal } from 'antd';
 import { getCartProducts } from '../../function/localstorage';
 import './style.css'
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,42 +7,96 @@ import { Api__url } from '../../api/config';
 import axios from 'axios';
 import { updateAmount } from '../../redux/action';
 import { total } from '../../function/common';
+
 const CheckOut = ({ isModalOpen, setIsModalOpen }) => {
 
     const [cart, setCart] = useState(getCartProducts())
-    const [apiData,setApiData] = useState([])
+    const [apiData, setApiData] = useState([])
     const dispatch = useDispatch()
-    
+    const tokenId = localStorage.getItem("token");
+    const [userData, setUserData] = useState({
+        gmailUser: {}
+    })
 
-    useEffect(()=>{
+    useEffect(() => {
         async function getUser() {
-          try {
-              const response = await axios.get(Api__url);
-              setApiData(response.data.data)
-              let totalAmount = total(response.data.data)
-              dispatch(updateAmount(totalAmount))
-              const localstorage = getCartProducts()
-              setCart(localstorage)
-          } catch (error) {
-              console.error(error);
-          }
+            try {
+                const response = await axios.get(Api__url);
+                setApiData(response.data.data)
+                let totalAmount = total(response.data.data)
+                dispatch(updateAmount(totalAmount))
+                const localstorage = getCartProducts()
+                setCart(localstorage)
+            } catch (error) {
+                console.error(error);
+            }
         }
         getUser()
-      },[cart,isModalOpen,dispatch])
+    }, [cart, isModalOpen, dispatch])
 
-      const filterData = apiData.filter(v => v?.id && cart.includes(v.id))
+    const filterData = apiData.filter(v => v?.id && cart.includes(v.id))
 
     const count = useSelector((state) => state.counter)
     const totalGST = count * 15 / 100
 
     const totalAmountOrder = count + 200 + totalGST
-    
 
-    const showModal = () => {
+
+    const showModal = async () => {
         setIsModalOpen(true);
+        if (!tokenId) {
+            console.log("No token found, user needs to log in");
+            return;
+        }
+        try {
+            const response = await axios.get("http://localhost:5000/fetch-me", {
+                headers: {
+                    Authorization: tokenId,
+                },
+            });
+            console.log(response.data.data.gmailUser)
+            setUserData(response.data.data.gmailUser)
+        } catch (error) {
+            if (error.response) {
+                console.log("Error Response:", error.response.status, error.response.data);
+            } else if (error.request) {
+                console.log("Error Request:", error.request);
+            } else {
+                console.log("Error Message:", error.message);
+            }
+        }
+
     };
-    const handleOk = () => {
+
+    const product = filterData.map((v, i) => {
+        return {  // Return the transformed object for each iteration
+            title: v.title,
+            amount: v.price,  // Add any other properties you need here
+            Qty: "1"
+        };
+    });
+
+    const orderObject = {
+        note: "Please deliver after 5 PM.",
+        mobileNumber: userData.phoneNumber,
+        gmail: userData.gmail,
+        address: userData.address,
+        totalAmount:totalAmountOrder,
+        product: product
+        
+    };
+
+    
+    const handleOk = async () => {
         setIsModalOpen(false);
+        try {
+            console.log(orderObject)
+            const response = await axios.post("http://localhost:5000/order", orderObject);
+            message.success("Order Done")
+        } catch (error) {
+            console.log(error.message)
+        }
+        localStorage.removeItem("cart__data")
     };
     const handleCancel = () => {
         setIsModalOpen(false);
